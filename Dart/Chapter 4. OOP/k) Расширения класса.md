@@ -20,3 +20,13 @@ void main() {
 	print(num.pow(-2));
 }
 ```
+
+Пример расширения для Context, для удобного обращения к ThemeData и ColorScheme:
+```dart
+import 'package:flutter/material.dart';
+
+extension BuildContextTheme on BuildContext {
+  ThemeData get theme => Theme.of(this);
+  ColorScheme get colorScheme => theme.colorScheme;
+}
+```

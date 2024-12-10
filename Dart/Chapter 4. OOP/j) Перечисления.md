@@ -1,5 +1,5 @@
 
-Перечисления или `enum` представляют тип данныx, который хранит фиксированный набор константных з1начений:
+Перечисления или `enum` представляют тип данныx, который хранит фиксированный набор константных значений:
 ```run-dart
 enum Operation {
 	add,
@@ -36,4 +36,25 @@ void executeOperation(int x, int y, Operation op) {
 	
 	print("Результат: $result");
 } 
+```
+
+Перечисления можно создать с некоторыми методами и свойствами:
+```run-dart
+enum Animal {
+  dog('woof'),
+  cat('meow'),
+  bird('tweet');
+
+  final String sound;
+
+  const Animal(this.sound);
+
+  // Метод для получения ключа (в данном случае звука)
+  String get key => sound;
+}
+
+void main() {
+  Animal animal = Animal.dog;
+  print('The sound of ${animal.name} is ${animal.key}'); // Output: The sound of dog is woof
+}
 ```

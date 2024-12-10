@@ -59,7 +59,7 @@ abstract interface class Person {
 	late String name;
 	void say();
 }
-class Worker {
+class Worker implements Person {
 	@override
 	String name;
 	@override

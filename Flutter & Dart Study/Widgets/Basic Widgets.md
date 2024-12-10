@@ -391,3 +391,105 @@ Image changedImage = Image(
 );
 ```
 
+### PopupMenuButton
+
+```dart
+return PopupMenuButton(
+      icon: ...
+      shape: ...
+      itemBuilder: (BuildContext context) {
+        return List.generate(
+          ColorSelection.values.length,
+          (index) {
+            final currentColor = ColorSelection.values[index];
+            return PopupMenuItem(
+              value: index,
+              enabled: currentColor != colorSelected,
+              child: Wrap(
+                children: [
+                  ...
+                ],
+              ),
+            );
+          },
+        );
+      },
+      onSelected: (int value) => ...,
+    );
+```
+
+### IndexedStack
+
+```dart
+body: IndexedStack( 
+	index: value, // some index 
+	children: <Widget>[...], // some list of widgets 
+),
+```
+
+Result:
+![[{F21ACC03-5BD6-4650-90FD-698F9EE1FD55}.png|500]]
+
+### RotatedBox
+
+```dart
+child: RotatedBox(
+  quarterTurns: 1,
+  child: Text(
+	'Rotated text',
+  ),
+),
+```
+
+### BottomSheet
+
+```dart
+showModalBottomSheet<void>(
+	isScrollControlled: true, // enable dynamic height of sheet
+	context: context,
+	builder: (context) {
+		return Container(
+			...
+		);
+	},
+);
+```
+
+### Dismissble
+
+A widget that can be dismissed by dragging in the indicated direction. 
+
+```dart
+return ListView.builder(
+  itemCount: items.length,
+  padding: const EdgeInsets.symmetric(vertical: 16),
+  itemBuilder: (BuildContext context, int index) {
+	return Dismissible(
+	  background: Container(
+		color: Colors.green,
+	  ),
+	  key: ValueKey<int>(items[index]),
+	  onDismissed: (DismissDirection direction) {
+		setState(() {
+		  items.removeAt(index);
+		});
+	  },
+	  child: ListTile(
+		title: Text(
+		  'Item ${items[index]}',
+		),
+	  ),
+	);
+  },
+);
+```
+
+### SingleChildScrollView
+
+A box in which a single widget can be scrolled.
+
+```dart
+SingleChildScrollView(
+	child: ...,
+),
+```

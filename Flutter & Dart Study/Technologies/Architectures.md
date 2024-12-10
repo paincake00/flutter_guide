@@ -1,4 +1,4 @@
-
+	
 Basic architecture pattern:
 
 ![[Pasted image 20240801181345.png|280]]
