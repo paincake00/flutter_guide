@@ -44,3 +44,7 @@ You may already be familiar with these:
 - `stless`: Insert a `StatelessWidget`
 - `stful`: Insert a `StatefulWidget`
 - `stanim`: Insert a `StatefulWidget` with an `AnimationController`
+
+For generation:
+
+`dart run build_runner build --delete-conflicting-outputs`
