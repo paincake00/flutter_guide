@@ -40,6 +40,7 @@ Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-andr
 ## MVVM (Model-View-ViewModel)
 
 ![[Снимок экрана 2024-12-23 в 15.32.02.png]]
+![[Снимок экрана 2024-12-25 в 12.52.29.png]]
 
 - Model - это бизнес-логика
 - View - это UI
@@ -51,6 +52,143 @@ Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-andr
 Этот принцип разделяет View и ViewModel: так можно связать любые View и ViewModel, главное, чтобы имелись нужные свойства (которые вызываются командами). 
 ViewModel взаимодействует с моделью для получения, обновления и сохранения данных.
 ViewModel - совмещение Model и Controller. При обновлении данных ViewModel уведомляет View. 
+
+Code snippets:
+
+Это пример реализации ViewModel:
+```dart
+class HomeViewModel extends ChangeNotifier {
+	final BookingRepository _bookingRepository;
+	final UserRepository _userRepository;
+
+	late Command0 load; 
+	late Command1<void, int> deleteBooking;
+	
+	HomeViewModel({
+		required BookingRepository bookingRepository,
+		required UserRepository userRepository,
+	}) : _bookingRepository = bookingRepository,
+      _userRepository = userRepository {
+      // Load required data when this screen is built
+      load = Command0(_load)..execute(); 
+      deleteBooking = Command1(_deleteBooking);
+    }
+
+	User? _user;
+	User? get user => _user;
+
+	List<BookingSummary> _bookings = [];
+	List<BookingSummary> get bookings => _bookings;
+
+	Future<Result> _load() async {
+		try {
+		  final userResult = await _userRepository.getUser();
+		  switch (userResult) {
+			case Ok<User>():
+			  _user = userResult.value;
+			  _log.fine('Loaded user');
+			case Error<User>():
+			  _log.warning('Failed to load user', userResult.error);
+		  }
+	
+		  // ...
+	
+		  return userResult;
+		} finally {
+		  notifyListeners();
+		}
+	}
+
+	Future<Result<void>> _deleteBooking(int id) async {
+	  try {
+	    final resultDelete = await _bookingRepository.delete(id);
+	    switch (resultDelete) {
+	      case Ok<void>():
+	        _log.fine('Deleted booking $id');
+	      case Error<void>():
+	        _log.warning('Failed to delete booking $id', resultDelete.error);
+	        return resultDelete;
+	    }
+	
+	    return resultLoadBookings;
+	  } finally {
+	    notifyListeners();
+	  }
+	}
+}
+```
+
+Commands - это объекты, ответственные за взаимодействие, которое начинается в слое View и заканчивается в слое Model.
+Command является типом, который помогает безопасно обновлять UI, независимо от времени и результата.
+
+Код класса Command:
+```dart
+abstract class Command<T> extends ChangeNotifier {
+  Command();
+  bool running = false;
+  Result<T>? _result;
+
+  /// true if action completed with error
+  bool get error => _result is Error;
+
+  /// true if action completed successfully
+  bool get completed => _result is Ok;
+
+  /// Internal execute implementation
+  Future<void> _execute(action) async {
+    if (_running) return;
+
+    // Emit running state - e.g. button shows loading state
+    _running = true;
+    _result = null;
+    notifyListeners();
+
+    try {
+      _result = await action();
+    } finally {
+      _running = false;
+      notifyListeners();
+    }
+  }
+}
+```
+
+Слой View. Вызов команд из ViewModel:
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+      body: SafeArea(
+        child: ListenableBuilder(
+          listenable: viewModel,
+          builder: (context, _) {
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(),
+                SliverList.builder(
+                  itemCount: viewModel.bookings.length,
+                  itemBuilder: (_, index) =>
+                      _Booking(
+                        key: ValueKey(viewModel.bookings[index].id),
+                        booking: viewModel.bookings[index],
+                        onTap: () =>
+                            context.push(Routes.bookingWithId(
+                                viewModel.bookings[index].id)
+                            ),
+                        onDismissed: (_) =>
+                            viewModel.deleteBooking.execute(
+                              viewModel.bookings[index].id,
+                            ), // Вызов команды
+                      ),
+                ),
+              ],
+            );
+          }
+        )
+      )
+  );
+}
+```
 
 ## MVI (Model-View-Intent)
 
