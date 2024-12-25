@@ -1,6 +1,7 @@
 
 Source 1: https://simpleone.ru/blog/mv-patterny-v-razrabotke-veb-prilozheniya
 Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-android-0046bf9b8a2e
+Source 3: https://docs.flutter.dev/app-architecture/case-study/ui-layer
 ##  MVC (Model-View-Controller)
 
 ![[Pasted image 20241223133414.png]]
@@ -12,7 +13,12 @@ Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-andr
 
 #### Принцип
 
+
+
 КРАТКО: User взаимодействует через Controller, который передает управление View.
+
+Данные передаются по кругу:
+-> View -> Controller -> Model ->
 
 Это самый старый паттерн для разделения UI и бизнес-логики. 
 - Сначала мы отправляем запрос на Controller (то есть, событие с данными). 
@@ -31,6 +37,8 @@ Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-andr
 #### Принцип
 
 КРАТКО: User взаимодействует с View, а Presenter подписывается на события от UI.
+
+Presenter получает/передает данные для Model и также обращается View (меняет состояние). 
 
 Этот принцип разделяет View и Controller.
 - Пользователь взаимодействует с UI (слой View), вводя данные или совершая разные действия. Это все события.
@@ -200,5 +208,7 @@ Widget build(BuildContext context) {
 - Intent - представляет собой действия, которые пользователь может выполнить в приложении
 
 КРАТКО: однонаправленная архитектура
+
+View может не только запрашивать/передавать данные сам, но и сам получать при инициализации состояния. View не является таким ведущим, как в MVVM. Это подход более реактивный. 
 
 Пользователь выполняет действие, которое будет Intent → Intent - это состояние, которое является входом в Model → Model хранит состояние и отправляет запрошенное состояние в View → View загружает состояние из Model → Отображает пользователю.
