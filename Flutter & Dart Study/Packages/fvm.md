@@ -12,6 +12,6 @@ Flutter Version Management
 
 Удаление - `fvm remove [version]`
 
-Выбор SDK - `fvm use [version]` (заранее стоит удалить `.fvm` из проекта и работать через администратора)
+Выбор SDK - `fvm use [version]` (заранее стоит удалить `.fvm` из проекта и работать через администратора, если на windows)
 
 
