@@ -47,4 +47,6 @@ You may already be familiar with these:
 
 For generation:
 
-`dart run build_runner build --delete-conflicting-outputs`
+```sh
+dart run build_runner build --delete-conflicting-outputs
+```
