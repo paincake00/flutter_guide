@@ -74,19 +74,138 @@ State знает о своем виджете и его элементе. Вид
 
 - `createState()`: создание State объекта этого виджета, который содержит изменяемое состояние.
 
-- `initState()`: инициализирует состояние виджета. Вызывается единожды при создании виджета в первый раз.
+- `initState()`: инициализирует состояние виджета. Вызывается единожды при создании виджета в первый раз. Внутри этого метода нельзя использовать `BuildContext.dependOnInheritedWidgetOfExactType`. Его можно использовать уже в следующем методе.
 
-- `didChangeDependencies()`: вызывается сразу после `initState()`. Вызывается также если поменялся объект, от которого зависит данный виджет.
+- `didChangeDependencies()`: вызывается сразу после `initState()`. Вызывается также если поменялся объект, от которого зависит данный виджет. Конкретно слушает`InheritedWidget`. 
+  В нем можно использовать метода контекста: `dependOnInheritedWidgetOfExactType`, `findAncestorWidgetOfExactType`, `findAncestorStateOfType`, `findRootAncestorStateOfType`.
 
-- `build()`: Вызывается каждый раз, когда необходимо построить (или перестроить) и вернуть древо виджетов.
+```dart
+class _DefaultTabControllerListenerState
+extends State<DefaultTabControllerListener> {
+	TabController? _controller;
+  
+	@override
+	void didChangeDependencies() {
+		super.didChangeDependencies();
+		final defaultTabController = DefaultTabController.maybeOf(context);
+		if (defaultTabController != _controller) {
+			_controller?.removeListener(_listener);
+			_controller = defaultTabController;
+			_controller?.addListener(_listener);
+		}
+	}
+	  
+	void _listener() {
+		final controller = _controller;
+		if (controller == null || controller.indexIsChanging) {
+			return;
+		}
+		widget.onTabChanged(controller.index);
+	}
+	  
+	@override
+	void dispose() {
+		_controller?.removeListener(_listener);
+		super.dispose();
+	}
+	  
+	@override
+	Widget build(BuildContext context) {
+		return widget.child;
+	}
+}
+```
+
+- `build()`: Вызывается каждый раз, когда необходимо построить (или перестроить) и вернуть древо виджетов. 
+   В нем можно использовать метода контекста: `dependOnInheritedWidgetOfExactType`, `findAncestorWidgetOfExactType`, `findAncestorStateOfType`, `findRootAncestorStateOfType`.
 
 - `didUpdateWidget()`: этот метод вызывается, когда родительский виджет изменяет свою конфигурацию и требует перестройки виджета. Он принимает старый виджет в качестве аргумента, позволяя сравнить его с новым виджетом. Используйте этот метод для обработки изменений в конфигурации виджета.
+   В нем можно использовать метода контекста: `dependOnInheritedWidgetOfExactType`, `findAncestorWidgetOfExactType`, `findAncestorStateOfType`, `findRootAncestorStateOfType`.
+
+```dart
+class _LoveRepublicRadioCardState<T> extends State<LoveRepublicRadioCard<T>>
+with SingleTickerProviderStateMixin {
+
+late final AnimationController _controller;
+final _easeInOutTween = CurveTween(curve: Curves.easeInOutCubic);
+final _colorTween = ColorTween(begin: grayLine, end: black);
+final _widthTween = Tween<double>(begin: 1, end: 1.3);
+late final Animation<Color?> _borderColor;
+late final Animation<double?> _borderWidth;
+  
+@override
+void initState() {
+	super.initState();
+	_controller = AnimationController(duration: _kDuration, vsync: this);
+	  
+	_borderColor = _controller.drive(_colorTween.chain(_easeInOutTween));
+	_borderWidth = _controller.drive(_widthTween.chain(_easeInOutTween));
+	
+	if (widget.groupValue == widget.value) _controller.value = 1.0;
+}
+  
+@override
+void dispose() {
+	_controller.dispose();
+	super.dispose();
+}
+  
+@override
+void didUpdateWidget(covariant LoveRepublicRadioCard<T> oldWidget) {
+	super.didUpdateWidget(oldWidget);
+	  
+	if (oldWidget.groupValue != widget.groupValue) {
+	_makeSelection(widget.groupValue == widget.value);
+	}
+}
+
+void _makeSelection(bool isSelected) {
+	isSelected ? _controller.forward() : _controller.reverse();
+}
+  
+@override
+Widget build(BuildContext context) {
+	final child = Padding(
+		padding: widget.pagging,
+		child: LoveRepublicRadioTile(
+			value: widget.value
+			groupValue: widget.groupValue,
+			title: widget.title,
+			onChanged: widget.onChanged,
+		),
+	);
+	return AnimatedBuilder(
+		animation: _controller.view,
+		builder: _builder,
+		child: child,
+	);
+}
+  
+Widget _builder(BuildContext _, Widget? child) {
+	return InkWell(
+		focusColor: Colors.transparent,
+		onTap: (widget.onChanged == null || widget.groupValue == widget.value)
+			? null
+			: () => widget.onChanged!.call(widget.value),
+		child: DecoratedBox(
+			decoration: BoxDecoration(
+				border: Border.all(
+					color: _borderColor.value!,
+					width: _borderWidth.value!,
+				),
+			),
+			child: child,
+		),
+	);
+}
+}
+```
 
 - `setState()`: метод setState() уведомляет структуру о том, что внутреннее состояние виджета изменилось и нуждается в обновлении.
 
-- `deactivate()`: Этот метод вызывается, когда виджет удаляется из дерева виджетов (состояние сохраняется), но может быть повторно вставлен до завершения текущих изменений кадра. 
+- `deactivate()`: Этот метод вызывается, когда виджет удаляется из дерева виджетов (состояние сохраняется), но может быть повторно вставлен до завершения текущих изменений кадра. Методы контекста нельзя использовать, т.к. контекст уничтожен.
 
-- `dispose()`: уничтожает состояние виджета при удалении виджета.
+- `dispose()`: уничтожает состояние виджета при удалении виджета. Методы контекста нельзя использовать, т.к. контекст уничтожен.
 
 ### InheritedWidget
 
@@ -126,6 +245,8 @@ class CounterInherited extends InheritedWidget {
 
 На основе InheritedWidget основан пакет Provider, который добавляет новые виджеты для управления состоянием, новые конструкторы и т.д.
 
-### Проект с демонстрацией использования InheritedWidget
+### Проекты с демонстрацией использования InheritedWidget и Provider
 
-Ref: https://github.com/paincake00/counter_with_iw
+InheritedWidget: https://github.com/paincake00/counter_with_iw
+
+Provider: https://github.com/paincake00/surf-flutter-summer-school-24
