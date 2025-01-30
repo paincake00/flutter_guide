@@ -1,4 +1,4 @@
-
+t
 There are two implementation of lists (Есть две реализации списков).
 
 ### Изменяемые списки

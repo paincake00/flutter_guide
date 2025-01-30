@@ -23,6 +23,11 @@ code format (in the root of project):
 dart format .
 ```
 
+code format (for definite size of string):
+```sh
+fvm dart format -l 120 .
+```
+
 For generation (for all):
 ```sh
 dart run build_runner build --delete-conflicting-outputs
