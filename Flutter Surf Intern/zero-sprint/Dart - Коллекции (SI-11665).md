@@ -79,7 +79,7 @@ void main() {
 
 ```dart
 void main() {
-  var numberSet = Set.of([1, 2, 3, 3, 4, 5]);
+  var numberSet = Set.of([1, 2, 3, 3, 4, 5]); // в отличии от from другой тип данных
   
   print(numberSet); // Output: {1, 2, 3, 4, 5} (дубликаты удаляются)
 }
@@ -140,7 +140,9 @@ final Set<String> immutableSet = const {'Apple', 'Banana', 'Cherry'};
 
 ### 6. Использование операторов spread ("..."), control flow и циклы внутри коллекций
 
-**Пример с оператором spread и control flow**:
+Spread-оператор **позволяет распаковывать элементы одного массива внутри другого**. С его помощью обычно копируют или сливают массивы
+
+**Пример с оператором spread, control flow, cycles**:
 
 ```dart
 List<int> additionalNumbers = [4, 5, 6];
@@ -148,6 +150,7 @@ List<int> combinedList = [
   ...numbers,
   ...additionalNumbers,
   if (additionalNumbers.isNotEmpty) 7,
+  ...[for (int i = 1; i <= 5; i++) i * i],
 ];
 ```
 
