@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IT way/Git Guide.md",
+                "file": "Flutter Surf Intern/ИПР/MV patterns.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git Guide"
+              "title": "MV patterns"
             }
           }
         ]
@@ -162,11 +162,11 @@
   "active": "66e276711be7f88a",
   "lastOpenFiles": [
     "Flutter & Dart Study/Flutter Base/Snippets.md",
+    "IT way/Git Guide.md",
     "Flutter & Dart Study/Flutter Base/Flutter Env Setup.md",
     "Flutter & Dart Study/Packages/auto_route.md",
     "Flutter & Dart Study/Packages/bloc.md",
     "IT way/Main terms.md",
-    "IT way/Git Guide.md",
     "Flutter & Dart Study/Packages/fvm.md",
     "Flutter Surf Intern/zero-sprint/Общее - Паттерны (SI-11658).md",
     "Flutter Surf Intern/ИПР/Обработка ошибок.md",
