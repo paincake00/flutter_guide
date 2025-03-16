@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flutter Surf Intern/zero-sprint/Общее - ООП (SI-11656).md",
+                "file": "Dart/Chapter 3. Functional programming/a) Определение функции, параметры и возврат.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Общее - ООП (SI-11656)"
+              "title": "a) Определение функции, параметры и возврат"
+            }
+          },
+          {
+            "id": "d290c5d35449a256",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Flutter Surf Intern/For interview.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "For interview"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -159,44 +174,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4ecb9df03a9c1861",
+  "active": "d290c5d35449a256",
   "lastOpenFiles": [
-    "Dart/Chapter 4. OOP/b) Конструкторы.md",
-    "Flutter Surf Intern/zero-sprint/Dart - Асинхронность (SI-11662-4).md",
-    "Flutter Surf Intern/zero-sprint/Dart - Коллекции (SI-11665).md",
-    "Flutter Surf Intern/zero-sprint/Dart - Система типов (SI-11660).md",
-    "Flutter & Dart Study/Flutter Base/Snippets.md",
-    "Flutter & Dart Study/Flutter Base/Flutter Env Setup.md",
-    "IT way/Git Guide.md",
-    "IT way/Main terms.md",
     "Flutter Surf Intern/ИПР/MV patterns.md",
-    "Quick start.md",
-    "Flutter & Dart Study/Packages/Provider.md",
-    "Flutter & Dart Study/Packages/shared_preferences.md",
-    "Flutter & Dart Study/Packages/bloc.md",
-    "Flutter & Dart Study/Packages/fvm.md",
-    "Flutter & Dart Study/Packages/auto_route.md",
-    "Flutter Surf Intern/zero-sprint/Общее - Паттерны (SI-11658).md",
-    "Flutter Surf Intern/ИПР/Обработка ошибок.md",
-    "Flutter Surf Intern/ИПР/Дебаггинг и точки останова.md",
-    "Flutter Surf Intern/zero-sprint/Flutter - Навигация (SI-11671).md",
-    "Flutter Surf Intern/ИПР/shared_preferences.md",
+    "Flutter Surf Intern/For interview.md",
     "Flutter Surf Intern/ИПР/Unit-тестирование и mocktail.md",
-    "mock-объекты.md",
-    "Flutter Surf Intern/assets/images/Pasted image 20250130145039.png",
+    "Flutter Surf Intern/ИПР/Key - local & global.md",
+    "Flutter Surf Intern/ИПР/Lifting State Up & Callbacks.md",
+    "Flutter Surf Intern/ИПР/Elementary.md",
+    "Flutter Surf Intern/ИПР/Дебаггинг и точки останова.md",
+    "Flutter Surf Intern/ИПР/Constraints.md",
+    "Flutter Surf Intern/ИПР/Event Loop.md",
+    "Flutter Surf Intern/ИПР/Clean Architecture.md",
+    "Flutter Surf Intern/ИПР/Обработка ошибок.md",
     "Flutter Surf Intern/zero-sprint/Flutter - Анимация (SI-11670).md",
+    "Flutter Surf Intern/zero-sprint/Flutter - Навигация (SI-11671).md",
     "Flutter Surf Intern/zero-sprint/Flutter - Виджеты (SI-11668).md",
     "Flutter Surf Intern/zero-sprint/Flutter - Общее (SI-11667).md",
     "Flutter Surf Intern/zero-sprint/Dart - NullSafety (SI-11661).md",
+    "Flutter Surf Intern/zero-sprint/Dart - HTTP (SI-11666).md",
+    "Flutter Surf Intern/zero-sprint/Общее - Алгоритмы (SI-11659).md",
+    "IT way/Main terms.md",
+    "IT way/Git Guide.md",
+    "Flutter Surf Intern/zero-sprint/Общее - ООП (SI-11656).md",
+    "Dart/Chapter 3. Functional programming/a) Определение функции, параметры и возврат.md",
+    "Flutter Surf Intern/zero-sprint/Общее - Паттерны (SI-11658).md",
+    "Flutter Surf Intern/zero-sprint/Общее - S O L I D (SI-11657).md",
+    "Flutter Surf Intern/zero-sprint/Dart - Система типов (SI-11660).md",
+    "Flutter Surf Intern/zero-sprint/Dart - Коллекции (SI-11665).md",
+    "Flutter Surf Intern/assets/images/Pasted image 20250315141939.png",
+    "Flutter Surf Intern/assets/images/Pasted image 20250315135902.png",
+    "Flutter Surf Intern/assets/images/Pasted image 20250315135839.png",
+    "Flutter Surf Intern/assets/images/Pasted image 20250130145039.png",
     "Flutter & Dart Study/Technologies/assets/images/Pasted image 20240801165329.png",
     "Flutter & Dart Study/Technologies/assets/images 1/{5A343EE0-7C81-4813-9A33-EFFC078DFDC7}.png",
     "Flutter & Dart Study/Technologies/assets/images 1/{4EDF19A3-4F05-42AD-AE11-01CAEE811EB3}.png",
     "Flutter & Dart Study/Technologies/assets/images 1/{8564ECE4-F11F-4BFF-B4EE-C902F0181C08}.png",
     "Flutter & Dart Study/Technologies/assets/images 1/{EDAE741A-5F9A-42F1-A364-F363A60BC993}.png",
     "Flutter & Dart Study/Technologies/assets/images 1/{1501DBF9-6975-42C6-8F38-856FFD166BCC}.png",
-    "Flutter & Dart Study/Technologies/assets/images 1/{7E756505-A8CE-43DB-B595-C1A0B9DAFE88}.png",
-    "Flutter Surf Intern/assets/images/Pasted image 20250120134740.png",
-    "Flutter Surf Intern/assets/images/Pasted image 20250120143046.png",
     "Flutter Surf Intern/zero-sprint/Untitled",
     "IT way",
     "Flutter Surf Intern/assets/images",
