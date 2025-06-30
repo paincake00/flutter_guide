@@ -1,5 +1,5 @@
 {
-  "lastOpenLanguageTab": "dart",
+  "lastOpenLanguageTab": "go",
   "releaseNote2_0_0wasShowed": true,
   "persistentOuput": false,
   "timeout": 10000,
@@ -46,7 +46,7 @@
   "groovyArgs": "",
   "groovyFileExtension": "groovy",
   "groovyInject": "",
-  "golangPath": "go",
+  "golangPath": "/usr/local/go/bin/go",
   "golangArgs": "run",
   "golangFileExtension": "go",
   "goInject": "",
