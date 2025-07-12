@@ -51,3 +51,4 @@ go get -u
 ```sh
 go get [путь_к_пакету]@latest
 ```
+
