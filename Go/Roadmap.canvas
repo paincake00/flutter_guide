@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"id":"8e4173ad8d87c510","type":"file","file":"assets/images/Go_images/Pasted image 20250731181050.png","x":-620,"y":-400,"width":980,"height":614},
+		{"id":"f75f3a624ff5ca21","type":"text","text":"Статья от Route256: https://tproger.ru/articles/shift-to-golang-ozon-roadmap","x":-300,"y":-460,"width":660,"height":55}
+	],
+	"edges":[]
+}

@@ -81,11 +81,112 @@ func GetDB(dbAlias string, cfg *config.Config) (*sql.DB, error) {
 }
 ```
 
-### Контейнер (injector)
+
+### Ручной DI (hand-wired)
+
+#### Контейнер (injector)
 
 Контейнер берет на себя функции **создания, хранения и получения** сущностей, это помогает описывать код создания каждой сущности единожды.
 
 При использовании контейнера, зачастую программирование перетекает в _конфигурирование_ (например, XML или YAML документ со структурой зависимостей).
+
+Вызвать экспортируемый App можно в любом месте через создание нового метода для него через `(a *application.App)`.
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+    "net/http"
+)
+
+type App struct {
+    Logger *log.Logger
+    Mailer Mailer
+    Store  PostStore
+}
+
+func (a *App) HandleStorePost(w http.ResponseWriter, r *http.Request) {
+    a.Logger.Println("Handling store post...")
+    post := Post{Title: "Go DI"}
+    if err := a.Store.Save(post); err != nil {
+        http.Error(w, "failed to save post", http.StatusInternalServerError)
+        return
+    }
+    a.Mailer.Send("admin@example.com", "New post stored!")
+    fmt.Fprintln(w, "Post stored successfully")
+}
+
+func main() {
+    app := &App{
+        Logger: log.Default(),
+        Mailer: Mailer{},
+        Store:  PostStore{},
+    }
+    http.HandleFunc("/posts", app.HandleStorePost)
+    http.ListenAndServe(":8080", nil)
+}
+
+// Dummy implementations
+type Post struct{ Title string }
+type Mailer struct{}
+func (m Mailer) Send(to, body string) { fmt.Println("Mail sent to", to) }
+type PostStore struct{}
+func (s PostStore) Save(p Post) error { fmt.Println("Post saved:", p.Title); return nil }
+```
+
+#### Explicit dependency passing
+
+Функции явно принимают только нужные зависимости (это проще для использования в маленьких проектах).
+
+Но в отличие от контейнера зависимости придется явно "тянуть" через поля структур и аргументы функций из места, где проинициализированы зависимости (обычно в `main`).
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+    "net/http"
+)
+
+func HandleStorePost(
+    logger *log.Logger,
+    mailer Mailer,
+    store PostStore,
+) http.HandlerFunc {
+    return func(w http.ResponseWriter, r *http.Request) {
+        logger.Println("Handling store post...")
+        post := Post{Title: "Go DI"}
+        if err := store.Save(post); err != nil {
+            http.Error(w, "failed to save post", http.StatusInternalServerError)
+            return
+        }
+        mailer.Send("admin@example.com", "New post stored!")
+        fmt.Fprintln(w, "Post stored successfully")
+    }
+}
+
+func main() {
+    logger := log.Default()
+    mailer := Mailer{}
+    store := PostStore{}
+
+    http.HandleFunc("/posts", HandleStorePost(logger, mailer, store))
+    http.ListenAndServe(":8080", nil)
+}
+
+// Dummy implementations
+type Post struct{ Title string }
+type Mailer struct{}
+func (m Mailer) Send(to, body string) { fmt.Println("Mail sent to", to) }
+type PostStore struct{}
+func (s PostStore) Save(p Post) error { fmt.Println("Post saved:", p.Title); return nil }
+
+```
+
+### DI with libs & frameworks
 
 **В GO существует несколько библиотек, реализующих по-разному функционал контейнера зависимостей:**
 
