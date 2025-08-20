@@ -102,9 +102,36 @@ ctx := context.WithValue(parentCtx, userKey, userValue)
 #### Из готовых API
 
 - **HTTP-запросы:**
+
+```go
+ctx := req.Context()
+```
+Получает контекст, который отменится при завершении запроса или закрытии соединения.
+
 - **gRPC:**
-- `os/signal`:
-	fd
+
+```go
+ctx := stream.Context()
+```
+Автоматически управляет временем жизни RPC-запроса.
+
+- **`os/signal`**:
+
+```go
+ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+defer stop()
+```
+Отменяется при определенном сигнале от ОС.
+
+|Ситуация|Контекст|
+|---|---|
+|Корень цепочки|`Background()`|
+|Код ещё в разработке|`TODO()`|
+|Отмена по событию|`WithCancel()`|
+|Ограничение по времени|`WithTimeout()`|
+|Конкретная дата/время конца|`WithDeadline()`|
+|Передача метаданных|`WithValue()`|
+|HTTP/gRPC/Signal обработка|Из API (`req.Context()`, `signal.NotifyContext` и т.п.)|
 
 ##### Зачем нужен контекст в `http.Request`?
 
