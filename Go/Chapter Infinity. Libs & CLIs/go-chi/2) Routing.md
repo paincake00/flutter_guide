@@ -17,7 +17,7 @@ Trace(pattern string, h http.HandlerFunc)
 
 ### Получение named params и wildcards
 
-URL поддерживает именованные параметры (т.е. /users/{userID}) и подстановочные знаки (т.е. /admin/*).
+URL поддерживает именованные параметры (т.е. /users/{userID}) и подстановочные знаки (т.е. /admin/\*).
 
 ```go
 package main
@@ -67,6 +67,10 @@ func getArticle(w http.ResponseWriter, r *http.Request) {
         w.WriteHeader(404)
         w.Write([]byte("article not found"))
         return
+    }
+    
+	w.Write([]byte(article.Text()))
+}
 ```
 
 ### Sub Routers

@@ -29,6 +29,7 @@ bitwiseOR := a | b       // 11 (10 | 3 = 11)
 bitwiseXOR := a ^ b      // 9 (10 ^ 3 = 9)
 leftShift := a << 1      // 20 (10 << 1 = 20)
 rightShift := a >> 1     // 5 (10 >> 1 = 5)
+bitClear := a &^ b       // 8 (10 &^ 3 = 8) (a & (^b))
 
 // Операторы присваивания
 x := 10

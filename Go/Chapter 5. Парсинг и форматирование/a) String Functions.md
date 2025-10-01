@@ -20,7 +20,8 @@ func main() {
 	p("Repeat:    ", s.Repeat("a", 5))
 	p("Replace:   ", s.Replace("fooo", "o", "0", -1))
 	p("Replace:   ", s.Replace("foo", "o", "0", 1))
-	p("Slit:      ", s.Split("a-b-c-d-e", "-"))
+	p("Split:      ", s.Split("a-b-c-d-e", "-"))
+	p("Fields     ", s.Fields(" a  some words "))
 	p("ToLower:   ", s.ToLower("TEST"))
 	p("ToUpper:   ", s.ToUpper("test"))
 }
