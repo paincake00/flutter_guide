@@ -1,5 +1,5 @@
 {
-  "lastOpenLanguageTab": "go",
+  "lastOpenLanguageTab": "ruby",
   "releaseNote2_0_0wasShowed": true,
   "persistentOuput": false,
   "timeout": 10000,
@@ -110,7 +110,7 @@
   "cArgs": "",
   "cUseMain": true,
   "cInject": "",
-  "rubyPath": "ruby",
+  "rubyPath": "/Users/denispodpovetniy/.rbenv/shims/ruby",
   "rubyArgs": "",
   "rubyFileExtension": "rb",
   "rubyInject": "",

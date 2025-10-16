@@ -4,8 +4,7 @@ Source 2: https://medium.com/@mohammedkhudair57/mvi-architecture-pattern-in-andr
 Source 3: https://docs.flutter.dev/app-architecture/case-study/ui-layer
 ##  MVC (Model-View-Controller)
 
-![[Pasted image 20241223133414.png]]
-![[Pasted image 20241223143221.png]]
+![[Pasted image 20251013205120.png]]
 
 - Model - бизнес-логика
 - View - ответственен за отображение UI

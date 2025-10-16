@@ -4,53 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "6308d0afd34373f5",
+        "id": "eefa7f3d0400e4e4",
         "type": "tabs",
         "children": [
           {
-            "id": "371fe200569ef238",
+            "id": "50351d2d3f68cc33",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IT way/ruby intern guide.md",
+                "file": "IT way/intern guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ruby intern guide"
+              "title": "intern guide"
             }
           },
           {
-            "id": "c2373a10176fe043",
+            "id": "495b2997f5c13681",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SQL/PostgreSQL/JOIN.md",
+                "file": "Ruby/RubyOnRails/Основы.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JOIN"
-            }
-          },
-          {
-            "id": "7536355c53538b34",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT way/ruby intern guide.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ruby intern guide"
+              "title": "Основы"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -191,52 +177,51 @@
   },
   "active": "6d0800c1099aadf7",
   "lastOpenFiles": [
-    "Ruby",
-    "SQL/PostgreSQL/GROUP BY.md",
+    "assets/images/Ruby/Pasted image 20251010204304.png",
+    "assets/images/Ruby/Pasted image 20251013205120.png",
+    "assets/images/Ruby/Pasted image 20251010204008.png",
+    "assets/images/Ruby/Pasted image 20251010203925.png",
+    "assets/images/Ruby/Pasted image 20251008192106.png",
+    "IT way/Git Guide.md",
+    "Ruby/RubyOnRails/Основы.md",
+    "Ruby/Ch 2. OOP/b) Переменные и методы.md",
+    "Ruby/RubyOnRails",
+    "Ruby/Ch 2. OOP/a) Классы.md",
+    "Ruby/Ch 2. OOP/c) Геттеры и сеттеры.md",
+    "Ruby/Ch 1. Основы Ruby/h) Hash.md",
+    "Ruby/Ch 1. Основы Ruby/d) Variables.md",
+    "Ruby/Ch 1. Основы Ruby/e) Methods & Types Conversion.md",
     "Flutter Surf Intern/ИПР/MV patterns.md",
-    "SQL/PostgreSQL/JOIN.md",
-    "IT way/ruby intern guide.md",
-    "Flutter Surf Intern/zero-sprint/Общее - Паттерны (SI-11658).md",
-    "Go/Chapter 5. Парсинг и форматирование/k) Number Parsing.md",
+    "Ruby/Ch 1. Основы Ruby/c) The Basics.md",
+    "Ruby/Ch 1. Основы Ruby/b) Базовые типы в Ruby.md",
+    "Ruby/Ch 1. Основы Ruby/j) Loops, blocks and iterators.md",
+    "Ruby/Ch 1. Основы Ruby/i) Flow Control.md",
+    "Ruby/Ch 2. OOP/d) Модули.md",
+    "IT way/intern guide.md",
+    "Ruby/Ch 1. Основы Ruby/f) Regex.md",
+    "Go/Chapter 1. Основы Go/h) Map.md",
+    "Go/Chapter 1. Основы Go/k) Строки и руны.md",
     "Go/Chapter 5. Парсинг и форматирование/a) String Functions.md",
-    "Go/Chapter 5. Парсинг и форматирование/b) String Formatting.md",
-    "Go/Chapter 5. Парсинг и форматирование/c) Text Templates.md",
-    "Go/Chapter 5. Парсинг и форматирование/g) Time.md",
-    "Go/Chapter 5. Парсинг и форматирование/i) Time Formatting & Parsing.md",
-    "Go/Chapter 4. Параллелизм/o) Atomic Counters.md",
-    "Go/Chapter 4. Параллелизм/p) Mutexes.md",
-    "Go/Chapter 4. Параллелизм/k) Tickers.md",
-    "Go/Chapter 4. Параллелизм/g) Timeouts.md",
-    "SQL/PostgreSQL/DISTINCT.md",
-    "SQL/PostgreSQL/Enum.md",
-    "SQL/PostgreSQL/Alias.md",
+    "Go/Chapter 1. Основы Go/g) Массивы и срезы.md",
+    "Go/Chapter 1. Основы Go/d) Операторы.md",
+    "Go/Chapter 1. Основы Go/j) Указатели (Pointers).md",
+    "Go/Chapter 1. Основы Go/c) Переменные и типы данных.md",
+    "Go/Chapter 1. Основы Go/f) Циклы.md",
+    "Go/Chapter 1. Основы Go/e) Условные конструкции.md",
+    "Ruby/Ch 2. OOP",
+    "assets/images/Ruby/Pasted image 20251003191056.png",
+    "assets/images/Ruby/Pasted image 20251001214413.png",
+    "assets/images/Ruby/Pasted image 20251003124223.png",
+    "assets/images/Ruby/Pasted image 20251001205041.png",
+    "Ruby/Ch 1. Основы Ruby",
+    "Ruby",
     "AI/Pasted image 20250921174150.png",
-    "Flutter Surf Intern/zero-sprint/Dart - HTTP (SI-11666).md",
-    "Flutter Surf Intern/ИПР/Clean Architecture.md",
-    "Flutter Surf Intern/zero-sprint/Dart - Асинхронность (SI-11662-4).md",
-    "Flutter Surf Intern/zero-sprint/Общее - Алгоритмы (SI-11659).md",
-    "Flutter Surf Intern/zero-sprint/Общее - S O L I D (SI-11657).md",
-    "Flutter Surf Intern/zero-sprint/Общее - ООП (SI-11656).md",
-    "Go/Roadmap.md",
-    "assets/images/Ruby_intern",
+    "assets/images/Ruby",
     "assets/images/AI",
-    "assets/images/AI/Pasted image 20250914021459.png",
     "AI/Agents",
     "AI",
     "Go/Roadmap.canvas",
     "SQL/PostgreSQL",
-    "SQL",
-    "assets/images/Go_images/Pasted image 20250801182031.png",
-    "Pasted image 20250801182007.png",
-    "assets/images/Go_images/Pasted image 20250731181050.png",
-    "Go/Chapter Infinity. Libs & CLIs/sqlc",
-    "Go/Cheat Sheets",
-    "assets/images/Go_images/Pasted image 20250721193642.png",
-    "assets/images/Go_images/Pasted image 20250721192410.png",
-    "Go/Chapter Infinity. Libs & CLIs/uber-fx",
-    "Go/Chapter Infinity. Libs & CLIs",
-    "assets/images/Go_images/Pasted image 20250718152256.png",
-    "Pasted image 20250704163239.png",
-    "assets/images/Go_images/Pasted image 20250613181808.png"
+    "SQL"
   ]
 }
